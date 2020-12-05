@@ -1,10 +1,11 @@
 #=================================================
 # 自动构建 OpenWrt G-DOCK2.0
-# flyheart
-# 感谢p3terx大神的一键编译脚本
-# https://github.com/P3TERX/Actions-OpenWrt
+# https://github.com/ytalm/OpenWrt-R619AC-128M
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
+# Author: flyheart
+# 感谢p3terx大神的一键编译脚本
+# https://github.com/P3TERX/Actions-OpenWrt
 # Blog: https://p3terx.com
 #=================================================
 #
