@@ -9,7 +9,7 @@
 - 在原版基础上增加针对IPK编译和上传的功能
 ---
 ## 竞斗云Openwrt自动编译
-- 本项目Action内为竞斗云固件，每日22：00 UTC(北京时间早上6点)自动编译，4小时内可以全部完成
+- 本项目Action内为竞斗云固件，每周五4：00 UTC(北京时间中午12点)自动编译，4小时内可以全部完成
 - Mini版本包含基本使用插件，详细插件可以看各个Config的内容
 - Mod版本包含Adguard、酸酸乳、京东签到、Clash等插件以及仓库内全部主题
 - Full版本在Mod版本基础上增加Passwall、应用过滤等插件
@@ -67,5 +67,61 @@
 《[banner的说明](https://github.com/danshui-git/shuoming/blob/master/banner%E8%AF%B4%E6%98%8E.md)》
 #
 - 10、建议准备梯子一把，虽然云编译不需要梯子，不过你使用SSH连接、下载固件、打开github网页也是需要梯子比较好的（没有也行，比较卡就是）
-#
-- 此编译脚本来自[P3TERX大神一键编译脚本](https://github.com/P3TERX/Actions-OpenWrt)，感谢P3TERX大神！！！
+
+## Action 常用参数说明
+
+> - name 自动构建的名字
+> - on 触发条件
+>
+>   - schedule:                 # 时间表
+>     - cron: '0 19 \* \* \*'   # 每天国际时间 19 点，北京时间凌晨 3 点执行(北京+8)
+>   - watch                     # 监视
+>     - type: started           # 类型：点击了星标
+>
+> - env 环境变量
+> - jobs 任务
+> - build 工作的 id
+> - run-on 工作运行的环境平台
+> - if 工作运行的判断
+> - steps 包含一系列任务步骤
+>   - name 子任务名
+>   - user 使用官方的一些库完成一些操作
+>   - run 运行脚本
+>   - id 运行 id
+
+## 参考项目或文章
+
+- [Github Action 官方 Help](https://help.github.com/cn/actions/)
+
+- [Github Action 官方仓库](https://github.com/actions)
+
+- [openwrt 源码](https://github.com/coolsnowwolf/lede) © coolsnowwolf
+
+- [openwrt 构建参考](https://github.com/P3TERX/Actions-OpenWrt) © P3TERX
+
+- [openwrt 构建参考](https://github.com/ljk4160/GDOCK) © ljk4160
+
+- [openwrt 主题](https://github.com/sypopo/luci-theme-argon-mc) © sypopo
+
+- [openwrt-OpenClash](https://github.com/vernesong/OpenClash) © vernesong
+
+- [openwrt-packages 包](https://github.com/Lienol/openwrt-package) © Lienol
+
+- [adguardhome 插件](https://github.com/rufengsuixing/luci-app-adguardhome) © rufengsuixing
+
+- [Hello Word 插件](https://github.com/jerrykuku/luci-app-vssr) © jerrykuku
+
+- [Hello Word 插件修复冲突版](https://github.com/Leo-Jo-My/luci-app-vssr-plus) © Leo-Jo-My
+
+- [OpenAppFilter 插件](https://github.com/destan19/OpenAppFilter) © destan19
+
+- [openwrt 插件配置参考恩山](https://www.right.com.cn/forum/thread-344825-1-1.html) © xtwz
+
+- [padavan 源码](https://github.com/chongshengB/rt-n56u) © chongshengB
+
+- [padavan 构建参考](https://github.com/chongshengB/Padavan-build) © chongshengB
+
+## License
+
+[MIT](./LICENSE) © flyheart
+
