@@ -1,10 +1,15 @@
 #=================================================
+# 自动构建 OpenWrt G-DOCK2.0
+# flyheart
+# 感谢p3terx大神的一键编译脚本
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
-# Author: P3TERX
 # Blog: https://p3terx.com
 #=================================================
+#
+#修改以下代码或者开启触发开关都好，要严格按格式对好,前面有多少空格也要看清楚
+#代码里有 name: 后面的内容随便改,冒号后面是有个空格的,如果修改固件名字就要考虑能不能显示出你想要的
 
 name: Build Mod OpenWrt For Test
 
