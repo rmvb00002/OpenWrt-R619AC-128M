@@ -33,18 +33,18 @@ on:
     - cron: 0 4 * * 5                 # 周五国际时间4点，北京时间中午12点执行(北京+8)
   
 #点☆Star触发开始编译  
-  watch:
-    types: started
+  watch:                              # 监视操作
+    types: started                    # 点击 star 之后
     
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: mod.config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
-  UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
+  DIY_P1_SH: diy-part1.sh             # diy执行文件
+  DIY_P2_SH: diy-part2.sh             # diy执行文件
+  UPLOAD_BIN_DIR: true                # 是否导出bin文件
+  UPLOAD_FIRMWARE: true               # 是否导出固件
   UPLOAD_COWTRANSFER: true
   UPLOAD_WETRANSFER: true
   TZ: Asia/Shanghai
@@ -56,10 +56,10 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
-    - name: Checkout
+    - name: 准备结束                          # 1.导入主分支
       uses: actions/checkout@main
 
-    - name: Initialization environment
+    - name: 开始安装编译所需系统                # 2.初始化环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -72,27 +72,27 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: Clone source code
+    - name: 下载固件源码
       working-directory: /workdir
       run: |
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
-    - name: Load custom feeds
+    - name: 加载feeds跟自定义插件
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Update feeds
+    - name: 下载feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: 安装feeds跟自定义插件
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: Load custom configuration
+    - name: 加载diy.config设置
       run: |
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
@@ -100,7 +100,11 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
-    - name: Download package
+   # - name: SSH远程连接服务器配置固件
+   #   uses: P3TERX/debugger-action@main
+   #   if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
+    - name: 下载软件包
       id: package
       run: |
         cd openwrt
@@ -109,7 +113,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile the firmware
+    - name: 开始编译固件
       id: compile
       run: |
         cd openwrt
@@ -120,7 +124,7 @@ jobs:
         [ -s DEVICE_NAME ] && echo "::set-output name=DEVICE_NAME::$(cat DEVICE_NAME)"
         echo "::set-output name=FILE_DATE::$(date +"%Y%m%d%H%M")"
 
-    - name: Check space usage
+    - name: 检查github储存空间情况
       if: (!cancelled())
       run: df -hT
       
@@ -129,7 +133,7 @@ jobs:
           mkdir -p ./new/package
           cp -rf $(find ./openwrt/bin -type f -name "*.ipk") ./new/package
           
-    - name: Upload bin directory
+    - name: 上传bin文件夹(固件+ipk)在github空间
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
@@ -142,7 +146,7 @@ jobs:
         name: OpenWrt-Mod-Ipk
         path: ./new/package
     
-    - name: Organize files
+    - name: 整理固件文件夹
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
