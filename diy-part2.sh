@@ -10,5 +10,6 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# 通过修改diy-part2.sh文件可以自定义默认IP，登陆密码等。按我的需要现在的默认IP为192.168.1.222
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+#sed -i 's/192.168.1.1/192.168.1.222/g' package/base-files/files/bin/config_generate
