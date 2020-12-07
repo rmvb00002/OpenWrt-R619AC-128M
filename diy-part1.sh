@@ -10,9 +10,10 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
+# 通过修改diy-part1.sh文件修改feeds.conf.default配置。默认添加fw876/helloworld
+# fw876/helloworld
+sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+ 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git Whitestorys https://github.com/Whitestorys/openwrt-packages' feeds.conf.default
