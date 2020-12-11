@@ -14,17 +14,14 @@
 
 # 使用源码自带ShadowSocksR Plus+出国软件 fw876/helloworld
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-#sed -i '$a src-git jerrykuku https://github.com/jerrykuku/luci-app-vssr.git' feeds.conf.default                    #luci-app-vssr <M>
-sed -i '$a src-git fw876 https://github.com/fw876/helloworld.git' feeds.conf.default                                                  #luci-app-ssr-plus
+sed -i '$a src-git jerrykuku https://github.com/jerrykuku/luci-app-vssr.git' feeds.conf.default                    #luci-app-vssr <M>
+#sed -i '$a src-git fw876 https://github.com/fw876/helloworld.git                                                   #luci-app-ssr-plus
 
 # Add a feed source
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git Whitestorys https://github.com/Whitestorys/openwrt-packages' feeds.conf.default
 sed -i '$a src-git Whitecolor https://github.com/Whitestorys/openwrt-extra-packages.git' feeds.conf.default
 #sed -i '$a src-git fw876 https://github.com/fw876/helloworld' feeds.conf.default
-
-sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/hd_idle.lua
-sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
 
 #内核版本是会随着源码更新而改变的，在coolsnowwolf/lede的源码查看最好，以X86机型为例，源码的target/linux/x86文件夹可以看到有几个内核版本，x86文件夹里Makefile可以查看源码正在使用内核版本
 #修改版本内核（下面两行代码前面有#为源码默认最新5.4内核,没#为4.19内核,默认修改X86的，其他机型L大源码那里target/linux查看，对应修改下面的路径就好）
@@ -58,4 +55,6 @@ sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/xunlei.lua
 #vssr_plus_rely='https://github.com/Leo-Jo-My/my.git'             # vssr_plus 依赖
 #vssr_plus='https://github.com/Leo-Jo-My/luci-app-vssr-plus.git'  # vssr_plus 地址
 #filter_url='https://github.com/destan19/OpenAppFilter.git'       # AppFilter 地址
+
+
 
