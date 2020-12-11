@@ -16,9 +16,8 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 #sed -i '$a src-git jerrykuku https://github.com/jerrykuku/luci-app-vssr.git' feeds.conf.default                    #luci-app-vssr <M>
 #sed -i '$a src-git fw876 https://github.com/fw876/helloworld.git                                                   #luci-app-ssr-plus
-git clone https://github.com/jerrykuku/luci-app-vssr
-sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/frp.lua
-sed -i 's/\"services\"/\"nas\"/g' /usr/lib/lua/luci/controller/frps.lua
+git clone https://github.com/jerrykuku/lua-maxminddb.git                                                            #git lua-maxminddb 依赖
+git clone https://github.com/jerrykuku/luci-app-vssr.git
 
 # Add a feed source
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
@@ -35,7 +34,7 @@ sed -i '$a src-git Whitecolor https://github.com/Whitestorys/openwrt-extra-packa
 # git clone https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git package/lean/luci-theme-infinityfreedom  #透明主题
 # git clone -b master https://github.com/vernesong/OpenClash.git package/lean/luci-app-openclash  #openclash出国软件
 # git clone https://github.com/frainzy1477/luci-app-clash.git package/lean/luci-app-clash  #clash出国软件
-git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-app-serverchan  #微信推送
+# git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-app-serverchan  #微信推送
 # git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/lean/luci-app-smartdns  #smartdns DNS加速
 # git clone https://github.com/garypang13/luci-app-eqos.git package/lean/luci-app-eqos  #内网IP限速工具
 # git clone https://github.com/jerrykuku/node-request.git package/lean/node-request  #京东签到依赖
