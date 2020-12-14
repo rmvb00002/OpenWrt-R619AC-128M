@@ -17,10 +17,6 @@
 #sed -i '$a src-git jerrykuku https://github.com/jerrykuku/luci-app-vssr.git' feeds.conf.default                    #luci-app-vssr <M>
 #sed -i '$a src-git fw876 https://github.com/fw876/helloworld.git                                                   #luci-app-ssr-plus
 
-# Add luci-app-vssr <M>
-git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git                                                  #git lua-maxminddb 依赖
-git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
-
 # Add a feed source
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 sed -i '$a src-git Whitestorys https://github.com/Whitestorys/openwrt-packages' feeds.conf.default
