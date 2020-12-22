@@ -42,6 +42,7 @@ git clone https://github.com/tty228/luci-app-serverchan.git package/lean/luci-ap
 git clone https://github.com/jerrykuku/lua-maxminddb.git                      # vssr lua-maxminddb依赖
 git clone https://github.com/jerrykuku/luci-app-vssr.git                      # vssr地址
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner         # Add luci-app-onliner (need luci-app-nlbwmon)
+git clone https://github.com/jerrykuku/luci-app-ttnode.git                    #甜糖星愿自动采集插件
 
 # rm -rf ./package/lean/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon  #新的argon主题
 # 全新的[argon-主题]此主题玩法很多,这里看说明【https://github.com/jerrykuku/luci-theme-argon/blob/18.06/README_ZH.md】
